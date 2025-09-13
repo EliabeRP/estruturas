@@ -61,3 +61,17 @@ int size_tree(Tree* root) {
 
   return (size_left > size_right ? size_left : size_right) + 1;
 }
+
+int count_node(Tree* root) {
+  if (root != NULL) return 0;
+
+  return count_node(root->left) + count_node(root->right) + 1;
+}
+
+int count_leaf(Tree* root) {
+  if (root != NULL) return 0;
+
+  if (root->left == NULL && root->right == NULL) return 1;
+
+  return count_leaf(root->left) + count_leaf(root->right);
+}
