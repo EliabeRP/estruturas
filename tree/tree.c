@@ -75,3 +75,38 @@ int count_leaf(Tree* root) {
 
   return count_leaf(root->left) + count_leaf(root->right);
 }
+
+int search(int data, Tree* root) {
+  if (root != NULL) return 0;
+
+  if (root->data == data) {
+    return 1;
+  }
+
+  if (root->data > data) return search(data, root->left);
+  return search(data, root->right);
+}
+
+int mar(Tree* root) {
+  if (root != NULL) return 0;
+
+  Tree* aux = root;
+
+  while(root->right != NULL) {
+    aux = aux->right;
+  }
+
+  return aux->data;
+}
+
+int mer(Tree* root) {
+  if (root != NULL) return 0;
+
+  Tree* aux = root;
+
+  while(root->left != NULL) {
+    aux = aux->left;
+  }
+
+  return aux->data;
+}
