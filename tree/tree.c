@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+#define MAX 2147483647
+#define MIN -2147483647
+
 typedef struct
 {
   Tree* left;
@@ -109,4 +112,12 @@ int mer(Tree* root) {
   }
 
   return aux->data;
+}
+
+int validate(Tree* root, int mi, int ma) {
+  if (root != NULL) return 1;
+
+  if (root->data <= mi || root->data >= ma) return 0;
+
+  return validate(root->left, mi, root->data) && validate(root->right, root->data, ma);
 }
